@@ -6,8 +6,8 @@
  */
 #include "ros/ros.h"              // ROS 1
 #include "std_msgs/String.h"      // ROS 1
-//#include "rclcpp/rclcpp.hpp"      // ROS 2: Use rclcpp instead of ros
-//#include "std_msg/msg/string.hpp" // ROS 2: Need to add interface type "msg"
+//#include "rclcpp/rclcpp.hpp"       // ROS 2: Use rclcpp instead of ros
+//#include "std_msgs/msg/string.hpp" // ROS 2: Need to add interface type "msg"
 
 int main(int argc, char **argv)
 {
@@ -19,7 +19,7 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "talker");    // ROS 1
   ros::NodeHandle n;                  // ROS 1
   //rclcpp::init(argc, argv);                          // ROS 2
-  //auto node = rclcpp::NOde::make_shared("talker");   // ROS 2
+  //auto node = rclcpp::Node::make_shared("talker");   // ROS 2
 
 /*
  * Different publish API
@@ -59,8 +59,11 @@ int main(int argc, char **argv)
     ROS_INFO("%s", msg.data.c_str());  // ROS 1
     //RCLCPP_INFO(node->get_logger(), "%s\n", msg.data.c_str()); // ROS 2
 
-/*Same publish*/
+/*
+ * chatter_pub in ROS 2 is shared pointer. Need "->"
+ */
     chatter_pub.publish(msg);
+    //chatter_pub->publish(msg);
 
 /*
  * Different spin
