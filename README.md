@@ -12,18 +12,19 @@ cd migration_example_ws/src
 git clone https://github.com/Adlink-ROS/ROS_migration_example.git
 ```
 
-* Build and run ROS 1 first
+* Build and run ROS 1
 
 ```bash
 # 1st terminal
 roscore
 # 2nd terminal
+cd ~/migration_example_ws/
 catkin_make
 source ~/migration_example_ws/devel/setup.bash
 rosrun migration_example talker
 ```
 
-* Remove the comment in 3 files
+* Migrate to ROS 2: Remove the comment in 3 files
   - package.xml
   - CMakeLists.txt
   - talker.cpp
